@@ -16,13 +16,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    //微信分享
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    //图片加载
+    implementation('com.github.bumptech.glide:glide:4.7.1') {
+        exclude group: "com.android.support", module: 'appcompat-v7'
+    }
+    api 'com.lifesense.android.libs:talifensense:0.0.1-SNAPSHOT'
 }

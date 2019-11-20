@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#fffa842c</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="tv_line">#666666</color>
+    <color name="text_weak_color2">#d3d3d3</color>
+    <color name="grayB6">#b6b6b6</color>
 </resources>

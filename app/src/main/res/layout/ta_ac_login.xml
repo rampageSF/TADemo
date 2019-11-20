@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/icon_top"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/login_top_h"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/dr_login_topbg" />
+
+
+    <LinearLayout
+        android:id="@+id/row1"
+        android:layout_below="@id/icon_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="37dp"
+        android:layout_marginRight="37dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_mt"
+            android:text="登录"
+            android:textStyle="bold"
+            android:textColor="#ff000000"
+            android:textSize="30sp" />
+        <EditText
+            android:id="@+id/al_phone_Cet"
+            style="@style/text_important_small_style"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/ed_hcircle_gray"
+            android:drawablePadding="@dimen/marLeft_item_icon"
+            android:gravity="center_vertical"
+            android:hint="请输入9位数用户ID"
+            android:layout_marginTop="30dp"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:maxLength="9"
+            android:textColor="#ff000000"
+            android:textColorHint="@color/text_weak_color2"
+            android:textSize="18sp"
+            />
+
+        <LinearLayout
+  android:id="@+id/testLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_ed_mt"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+
+
+
+            <TextView
+                android:id="@+id/tvCurrentH5Url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="当前网页链接:"
+                />
+
+            <EditText
+                android:visibility="visible"
+                android:id="@+id/al_key_Cet"
+                style="@style/text_important_small_style"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/ed_hcircle_gray"
+                android:drawablePadding="@dimen/marLeft_item_icon"
+                android:gravity="center_vertical"
+                android:hint="自定义网页链接"
+                android:imeOptions="actionDone"
+                android:textColor="#ff000000"
+                android:textColorHint="@color/text_weak_color2"
+                />
+            <TextView
+                android:id="@+id/tvCurrentServiceUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="当前服务器地址:"/>
+
+            <EditText
+                android:visibility="visible"
+                android:id="@+id/etServiceUrl"
+                style="@style/text_important_small_style"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/ed_hcircle_gray"
+                android:drawablePadding="@dimen/marLeft_item_icon"
+                android:gravity="center_vertical"
+                android:hint="自定义服务器地址"
+                android:imeOptions="actionDone"
+                android:textColor="#ff000000"
+                android:textColorHint="@color/text_weak_color2"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/row1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="37dp"
+        android:layout_marginRight="37dp"
+        android:layout_marginTop="@dimen/dp_40"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/al_user_login_tv"
+            style="@style/common_btn_style"
+            android:clickable="true"
+            android:enabled="false"
+            android:gravity="center"
+            android:background="@drawable/bt_hcircle_orange"
+            android:onClick="onLoginClick"
+            android:text="@string/login" />
+
+        <TextView
+            android:id="@+id/tv_debug"
+            style="@style/common_btn_style"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onDebug"
+            android:text="debug"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

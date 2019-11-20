@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">TADemo</string>
+    <string name="app_name">乐心有氧健康</string>
+    <string name="login">登录</string>
+    <string name="country">国家</string>
 </resources>

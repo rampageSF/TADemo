@@ -1,0 +1,12 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="font_13">13sp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="marLeft_item_icon">10dp</dimen>
+    <dimen name="login_mt">10dp</dimen>
+    <dimen name="login_ed_mt">10dp</dimen>
+    <dimen name="login_top_h">167dp</dimen>
+    <dimen name="tab_h">60dp</dimen>
+    <dimen name="tab_pb" >4dp</dimen>
+
+</resources>
