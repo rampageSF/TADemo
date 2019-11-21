@@ -1,4 +1,4 @@
-# Andorid SDK接入文档  V0.0.1
+# Andorid SDK接入文档  V0.0.2
 
 ## 接入流程图:
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/223400/1574313537893-8ac674b1-f0d2-44a3-a42d-54089730242e.png#align=left&display=inline&height=223&name=image.png&originHeight=446&originWidth=881&search=&size=28651&status=done&width=440.5)
@@ -15,7 +15,7 @@ allprojects {
 ```
 在子项目build.gradle的dependencies中引入依赖
 ```java
-api 'com.lifesense.android.opensdk:lsinsurance:0.0.1'
+api 'com.lifesense.android.opensdk:lsinsurance:0.0.2'
 ```
 #### 2) **配置权限**
 已在SDK种添加各项权限配置，以下仅为补充说明
