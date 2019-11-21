@@ -1,4 +1,4 @@
-# Andorid SDK接入文档  V1.0
+# Andorid SDK接入文档  V0.0.1
 
 ## 接入流程图:
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/223400/1574313537893-8ac674b1-f0d2-44a3-a42d-54089730242e.png#align=left&display=inline&height=223&name=image.png&originHeight=446&originWidth=881&search=&size=28651&status=done&width=440.5)
