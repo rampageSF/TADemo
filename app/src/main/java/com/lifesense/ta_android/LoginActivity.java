@@ -141,7 +141,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 //设置用户信息和服务器地址
                 LifesenseAgent.login(LoginInfo.build(userId));
-                LifesenseAgent.setServerUrl(serviceUrl);
+//                LifesenseAgent.setServerUrl(serviceUrl);
 
 
                 //进入首页 LifesenseAgent.buildLsFragment(MyApp.getH5Url())
