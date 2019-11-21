@@ -14,7 +14,6 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.lifesense.lshybird.BuildConfig;
 import com.lifesense.lshybird.LifesenseAgent;
 import com.lifesense.lshybird.api.ApiUtils;
 import com.lifesense.lshybird.api.LsRequest;
@@ -81,7 +80,7 @@ public class MyApp extends Application implements ILsShareCallback {
         if(!TextUtils.isEmpty(SpUtils.getUserId())){
             LifesenseAgent.login(LoginInfo.build(SpUtils.getUserId()));
         }
-        LifesenseAgent.setDebug(BuildConfig.DEBUG);
+        LifesenseAgent.setDebug(true);
 
         //设置分享实现
         LifesenseAgent.setLsShareCallbackImpi(this);
