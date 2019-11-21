@@ -43,6 +43,15 @@ public class MyApp extends Application implements ILsShareCallback {
     //    private static final String h5Url = "https://cdn.lifesense.com/ta/#/home";
     private static final String h5Url = "https://static-qa.lifesense.com/ta/#/v-home";
 
+    //普通用户
+    public static final String h5normal = "https://static-qa.lifesense.com/tauser/#/home";
+    //vip用户
+    public static final String h5vip="https://static-qa.lifesense.com/ta/#/v-home";
+    //业务员
+    public static final String h5busiss="https://static-qa.lifesense.com/tasales/#/home";
+    //me
+    public static final String h5mine="https://static-qa.lifesense.com/tauser/#/user";
+
     public static String getH5Url() {
         String url = SpUtils.getDomain();
         if (TextUtils.isEmpty(url)) {

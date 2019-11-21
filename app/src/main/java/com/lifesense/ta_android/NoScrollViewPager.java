@@ -7,10 +7,12 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
+import com.lifesense.ta_android.wiget.NoPreloadViewPager;
+
 /**
  * Created by Sinyi.liu on 2019/10/22.
  */
-public class NoScrollViewPager extends ViewPager {
+public class NoScrollViewPager extends NoPreloadViewPager {
     private boolean isScroll=false;
 
 

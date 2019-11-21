@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     >
     <com.lifesense.ta_android.NoScrollViewPager
         android:id="@+id/viewpager"
@@ -18,8 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemIconTint="@color/colorPrimary"
-        app:itemTextColor="#000000"
+        app:itemIconTint="@color/tab_icon_colorbg"
+        app:itemTextColor="@color/tab_text_colorbg"
         app:menu="@menu/menu_navigation" />
 
 </RelativeLayout>

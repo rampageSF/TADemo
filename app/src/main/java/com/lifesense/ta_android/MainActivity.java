@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -17,15 +18,16 @@ import com.lifesense.lshybird.utils.URLface;
 import com.lifesense.lshybird.ui.BaseHyFragment;
 import com.lifesense.rpm.doctor.dev.R;
 import com.lifesense.ta_android.utils.BottomNavigationViewHelper;
+import com.lifesense.ta_android.wiget.NoPreloadViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    private ViewPager mViewPager;
+    private NoScrollViewPager mViewPager;
     private List<Fragment> mFragments = new ArrayList<>();
-    private FragmentPagerAdapter mAdapter;
+    private FragmentStatePagerAdapter mAdapter;
     private BottomNavigationView mNavigation;
 
     @Override
@@ -46,29 +48,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        mViewPager.setCurrentItem(2, true);
+                    case R.id.navigation_normal:
+                        mViewPager.setCurrentItem(0, true);
                         return true;
-                    case R.id.navigation_dashboard:
-                        if (System.currentTimeMillis() - lastTime < 200) {
-                            startActivity(new Intent(MainActivity.this, DebugActivity.class));
-                            finish();
-                        }
-                        lastTime = System.currentTimeMillis();
-                        return true;
-                    case R.id.navigation_mine:
-                        if (System.currentTimeMillis() - lastTime < 200) {
-                            mViewPager.setCurrentItem(3, true);
-                        }
-                        lastTime = System.currentTimeMillis();
-                        return true;
-                    case R.id.navigation_activity:
+                    case R.id.navigation_vip:
+                        mViewPager.setCurrentItem(1, true);
+
 //                        if (System.currentTimeMillis() - lastTime < 200) {
-//                            mViewPager.setCurrentItem(1, true);
+//                            startActivity(new Intent(MainActivity.this, DebugActivity.class));
+//                            finish();
 //                        }
 //                        lastTime = System.currentTimeMillis();
-                        Intent intent = new Intent(MainActivity.this, YouzanActivity.class);
-                        startActivity(intent);
+                        return true;
+                    case R.id.navigation_mine:
+                        mViewPager.setCurrentItem(3, true);
+
+                        lastTime = System.currentTimeMillis();
+                        return true;
+                    case R.id.navigation_bussic:
+                        mViewPager.setCurrentItem(2, true);
+
+                        lastTime = System.currentTimeMillis();
+
+////                        if (System.currentTimeMillis() - lastTime < 200) {
+////                            mViewPager.setCurrentItem(1, true);
+////                        }
+////                        lastTime = System.currentTimeMillis();
+//                        Intent intent = new Intent(MainActivity.this, YouzanActivity.class);
+//                        startActivity(intent);
                         return true;
 
                 }
@@ -77,21 +84,23 @@ public class MainActivity extends AppCompatActivity {
         });
         mViewPager = findViewById(R.id.viewpager);
         // 使用H5 url构建
-        mFragments.add(new StepFragment());
-        mFragments.add(new StepFragment());
-        mFragments.add(LifesenseAgent.buildLsFragment(MyApp.getH5Url()));
-        mFragments.add(new MeFramgnet());
+        mFragments.add(LifesenseAgent.buildLsFragment(MyApp.h5normal));
+        mFragments.add(LifesenseAgent.buildLsFragment(MyApp.h5vip));
+        mFragments.add(LifesenseAgent.buildLsFragment(MyApp.h5busiss));
+        mFragments.add(LifesenseAgent.buildLsFragment(MyApp.h5mine));
         // init view pager
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), mFragments);
+
         mViewPager.setAdapter(mAdapter);
+        mViewPager.setOffscreenPageLimit(0);
         // register listener
-        mViewPager.addOnPageChangeListener(mPageChangeListener);
-        mViewPager.setCurrentItem(2);
+        mViewPager.setOnPageChangeListener(mPageChangeListener);
+        mViewPager.setCurrentItem(0);
 
 
     }
 
-    private ViewPager.OnPageChangeListener mPageChangeListener = new ViewPager.OnPageChangeListener() {
+    private NoPreloadViewPager.OnPageChangeListener mPageChangeListener = new NoPreloadViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -108,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
+    private class MyFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
         private List<Fragment> mList;
 
@@ -120,6 +129,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             return this.mList == null ? null : this.mList.get(position);
+        }
+
+        @Override
+        public int getItemPosition(@NonNull Object object) {
+            return POSITION_NONE;
         }
 
         @Override

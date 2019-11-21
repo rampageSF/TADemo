@@ -2,22 +2,28 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@mipmap/ic_launcher"
-        android:title="服务" />
+        android:id="@+id/navigation_normal"
+
+        android:icon="@mipmap/ta_normal_icon_ac"
+        android:iconTint="@mipmap/ta_normal_icon"
+        android:title="普通客户" />
 
     <item
-        android:id="@+id/navigation_activity"
-        android:icon="@mipmap/ic_launcher"
-        android:title="活动" />
+        android:id="@+id/navigation_vip"
+        android:icon="@mipmap/ta_vip_icon_ac"
+        android:iconTint="@mipmap/ta_vip_icon"
+        android:title="会员客户" />
+
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@mipmap/ta_tab_health"
-        android:title="健康" />
+        android:id="@+id/navigation_bussic"
+        android:icon="@mipmap/ta_bus_icon_ac"
+        android:iconTint="@mipmap/ta_bus_icon"
+        android:title="业务员" />
 
     <item
         android:id="@+id/navigation_mine"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ta_mine_icon_ac"
+        android:iconTint="@mipmap/ta_mine_icon"
         android:title="我的" />
 
 </menu>
