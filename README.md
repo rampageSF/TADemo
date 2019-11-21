@@ -1,4 +1,4 @@
-# Andorid SDK接入文档  V1.0
+# Andorid SDK接入文档  V0.0.1
 
 ## 接入流程图:
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/223400/1574313537893-8ac674b1-f0d2-44a3-a42d-54089730242e.png#align=left&display=inline&height=223&name=image.png&originHeight=446&originWidth=881&search=&size=28651&status=done&width=440.5)
@@ -20,7 +20,7 @@ api 'com.lifesense.android.opensdk:lsinsurance:0.0.1'
 #### 2) **配置权限**
 已在SDK种添加各项权限配置，以下仅为补充说明
 ```xml
-		<uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <!-- 检测联网方式, 区分用户设备使用的是2G、3G或是WiFi -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -130,9 +130,9 @@ public class MyApplication extends Application {
  	Bundle bundle = new Bundle();
 	bundle.putString(HybridConstant.INTENT_EXTRA_KEY_TOPAGE, text);
    	bundle.putSerializable(HybridConstant.INTENT_EXTRA_KEY_ANIMATION, HybridParamAnimation.PUSH);
-    bundle.putBoolean(HybridConstant.INTENT_EXTRA_KEY_HASNAVGATION, true);
-    Intent intent = new Intent(getContext(), BaseHyActivity.class);
-    intent.putExtras(bundle);
+    	bundle.putBoolean(HybridConstant.INTENT_EXTRA_KEY_HASNAVGATION, true);
+    	Intent intent = new Intent(getContext(), BaseHyActivity.class);
+    	intent.putExtras(bundle);
 	startActivityForResult(intent, HybridConstant.RQ_RESULT);
 ```
 
