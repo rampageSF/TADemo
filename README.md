@@ -2,6 +2,7 @@
 乐心保险业务SDK demo
 
 接入流程图:
+
 1 引入SDK
 1) 配置依赖
 在项目根目录的build.gradle中声明maven仓库
@@ -109,8 +110,10 @@ public class MyApplication extends Application {
         }
     };
 }
+
 2 加载视图
 通过MainHyActivity/BaseHyFragment加载
+
 2.1 activity入口
     Bundle bundle = new Bundle();
     bundle.putString(HybridConstant.INTENT_EXTRA_KEY_TOPAGE, text);
@@ -122,8 +125,8 @@ public class MyApplication extends Application {
 2.2 fragment入口
 //直接传入h5地址进入fragment
 LifesenseAgent.buildLsFragment(MyApp.h5mine)
+
 3 登录认证
 LoginInfo loginInfo = LoginInfo.build(userId)
 LifesenseAgent.login(loginInfo);
-demo地址：
-https://github.com/rampageSF/TADemo
+
