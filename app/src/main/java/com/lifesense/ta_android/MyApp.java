@@ -14,6 +14,7 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.lifesense.lshybird.LSConfig;
 import com.lifesense.lshybird.LifesenseAgent;
 import com.lifesense.lshybird.api.ApiUtils;
 import com.lifesense.lshybird.api.LsRequest;
@@ -34,7 +35,7 @@ import java.io.ByteArrayOutputStream;
 /**
  * Created by Sinyi.liu on 2019/8/24.
  */
-public class MyApp extends Application implements ILsShareCallback {
+public class MyApp extends Application {
     private static MyApp mMyApp;
 //    private static final String serverUrl = "https://sports.lifesense.com";
     //使用ok网络框架以斜杠结尾"/"
@@ -68,32 +69,37 @@ public class MyApp extends Application implements ILsShareCallback {
         if (this.getExternalCacheDir() != null) {
             logPath = this.getExternalCacheDir().getPath();
         }
-        Log.d("lifesense", "onCreate:打印日志路径： " + logPath);
-        LifesenseAgent.openWriteLogToFile(logPath);
+        LSConfig lsConfig =new LSConfig.Builder(mIImageLoad,mILsShareCallback)
+                .setLogPath(logPath)
+                .setServerUrl(getServerUrl())
+                .setApiRequest(mIApiRequestImp)
+                .build();
+        LifesenseAgent.init(this,lsConfig);
 
-        LifesenseAgent.init(this);
 
-
-        //设置api 服务器地址
-        LifesenseAgent.setServerUrl(getServerUrl());
-        //登录
-        if(!TextUtils.isEmpty(SpUtils.getUserId())){
-            LifesenseAgent.login(LoginInfo.build(SpUtils.getUserId()));
-        }
-        LifesenseAgent.setDebug(true);
-
-        //设置分享实现
-        LifesenseAgent.setLsShareCallbackImpi(this);
-        //设置图片加载实现
-        LifesenseAgent.setImageLoadImpl(mIImageLoad);
-        //设置网络请求实现
-        LifesenseAgent.setApiRequestImpl(mIApiRequestImp);
 
     }
 
     public static Context getApp() {
         return mMyApp;
     }
+
+    ILsShareCallback mILsShareCallback = new ILsShareCallback(){
+
+        @Override
+        public void onShare(ShareData shareData) {
+            if (shareData.getShareType() == ShareData.SHARE_TYPE_URL) {
+                ShareData.ShareUrl shareUrl = (ShareData.ShareUrl) shareData.getShare();
+                WechatUtil.getInstance().sendLinkReq(shareUrl.getTitle(),
+                        shareUrl.getDesc(), shareUrl.getUrl(),
+                        shareUrl.getThumbImgBitmap(),
+                        shareData.getShareChannel() == ShareData.SHARE_CHANNEL_WECHAT_FRIEND);
+            } else if (shareData.getShareType() == ShareData.SHARE_TYPE_SCREEN_SHOT) {
+                ShareData.ShareScreenshot shareScreenshot = (ShareData.ShareScreenshot) shareData.getShare();
+                WechatUtil.getInstance().sendImageReq("", "", shareScreenshot.getBitmap(), shareData.getShareChannel() == ShareData.SHARE_CHANNEL_WECHAT_FRIEND);
+            }
+        }
+    };
 
     IApiRequestImp mIApiRequestImp = new IApiRequestImp() {
         @Override
@@ -134,21 +140,6 @@ public class MyApp extends Application implements ILsShareCallback {
         }
     };
 
-    @Override
-    public void onShare(ShareData shareData) {
-        if (shareData.getShareType() == ShareData.SHARE_TYPE_URL) {
-            ShareData.ShareUrl shareUrl = (ShareData.ShareUrl) shareData.getShare();
-            WechatUtil.getInstance().sendLinkReq(shareUrl.getTitle(),
-                    shareUrl.getDesc(), shareUrl.getUrl(),
-                    shareUrl.getThumbImgBitmap(),
-                    shareData.getShareChannel() == ShareData.SHARE_CHANNEL_WECHAT_FRIEND);
-        } else if (shareData.getShareType() == ShareData.SHARE_TYPE_SCREEN_SHOT) {
-            ShareData.ShareScreenshot shareScreenshot = (ShareData.ShareScreenshot) shareData.getShare();
-            WechatUtil.getInstance().sendImageReq("", "", shareScreenshot.getBitmap(), shareData.getShareChannel() == ShareData.SHARE_CHANNEL_WECHAT_FRIEND);
-        }
-
-
-    }
 }
 
 
