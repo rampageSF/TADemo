@@ -102,6 +102,7 @@ public class MyApp extends Application {
             @Override
             public void onClick(View v) {
                 customDialog.dismiss();
+                shareData.setShareChannel(ShareData.SHARE_CHANNEL_WECHAT_FRIEND);
                 shareData.setShareCallBackParam(ShareData.SHARE_CHANNEL_WECHAT_FRIEND);
                 share(shareData);
             }
@@ -110,6 +111,7 @@ public class MyApp extends Application {
             @Override
             public void onClick(View v) {
                 customDialog.dismiss();
+                shareData.setShareChannel(ShareData.SHARE_CHANNEL_WECHAT_MOMENTS);
                 shareData.setShareCallBackParam(ShareData.SHARE_CHANNEL_WECHAT_MOMENTS);
                 share(shareData);
             }
@@ -152,9 +154,7 @@ public class MyApp extends Application {
         return new CustomDialog(context, w, h, layoutId, Gravity.BOTTOM);
     }
 
-    public static Context getApp() {
-        return mMyApp;
-    }
+
 
     ILsShareCallback mILsShareCallback = new ILsShareCallback(){
 
@@ -201,6 +201,9 @@ public class MyApp extends Application {
             }).submit();
         }
     };
+    public static Context getApp() {
+        return mMyApp;
+    }
 }
 
 
