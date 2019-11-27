@@ -103,10 +103,6 @@ public class MyApp extends Application {
             public void onClick(View v) {
                 customDialog.dismiss();
                 shareData.setShareChannel(ShareData.SHARE_CHANNEL_WECHAT_FRIEND);
-<<<<<<< HEAD
-=======
-                shareData.setShareCallBackParam(ShareData.SHARE_CHANNEL_WECHAT_FRIEND);
->>>>>>> 8d0495aceee355f19c7a47461b6d7cdae887dc33
                 share(shareData);
             }
         });
@@ -115,10 +111,6 @@ public class MyApp extends Application {
             public void onClick(View v) {
                 customDialog.dismiss();
                 shareData.setShareChannel(ShareData.SHARE_CHANNEL_WECHAT_MOMENTS);
-<<<<<<< HEAD
-=======
-                shareData.setShareCallBackParam(ShareData.SHARE_CHANNEL_WECHAT_MOMENTS);
->>>>>>> 8d0495aceee355f19c7a47461b6d7cdae887dc33
                 share(shareData);
             }
         });
