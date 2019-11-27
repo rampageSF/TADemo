@@ -102,7 +102,7 @@ public class MyApp extends Application {
             @Override
             public void onClick(View v) {
                 customDialog.dismiss();
-                shareData.setShareCallBackParam(ShareData.SHARE_CHANNEL_WECHAT_FRIEND);
+                shareData.setShareChannel(ShareData.SHARE_CHANNEL_WECHAT_FRIEND);
                 share(shareData);
             }
         });
@@ -110,13 +110,16 @@ public class MyApp extends Application {
             @Override
             public void onClick(View v) {
                 customDialog.dismiss();
-                shareData.setShareCallBackParam(ShareData.SHARE_CHANNEL_WECHAT_MOMENTS);
+                shareData.setShareChannel(ShareData.SHARE_CHANNEL_WECHAT_MOMENTS);
                 share(shareData);
             }
         });
         customDialog.findViewById(R.id.tv_cancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //取消分享
+                shareData.setShareChannel(0);
+                LifesenseAgent.execute(shareData);
                 customDialog.dismiss();
 
             }
@@ -124,7 +127,7 @@ public class MyApp extends Application {
         customDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
-                shareData.setShareCallBackParam(0);
+                shareData.setShareChannel(0);
                 LifesenseAgent.execute(shareData);
             }
         });
@@ -132,6 +135,8 @@ public class MyApp extends Application {
     }
 
     private void share(ShareData shareData) {
+        //执行分享回调通知后台添加积分和改变h5ui
+        LifesenseAgent.execute(shareData);
         if (shareData.getShareType() == ShareData.SHARE_TYPE_URL) {
             ShareData.ShareUrl shareUrl = (ShareData.ShareUrl) shareData.getShare();
             WechatUtil.getInstance().sendLinkReq(shareUrl.getTitle(),
@@ -171,7 +176,6 @@ public class MyApp extends Application {
     };
     IImageLoadImpl mIImageLoad = new IImageLoadImpl() {
         @Override
-
         public void load(ImageView imageView, String url) {
             Glide.with(imageView.getContext())
                     .load(url)
