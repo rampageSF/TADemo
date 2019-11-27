@@ -171,6 +171,7 @@ public class MyApp extends Application {
     };
     IImageLoadImpl mIImageLoad = new IImageLoadImpl() {
         @Override
+
         public void load(ImageView imageView, String url) {
             Glide.with(imageView.getContext())
                     .load(url)
