@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), mFragments);
 
         mViewPager.setAdapter(mAdapter);
-        mViewPager.setOffscreenPageLimit(0);
+        mViewPager.setOffscreenPageLimit(4);
         // register listener
         mViewPager.setOnPageChangeListener(mPageChangeListener);
         mViewPager.setCurrentItem(0);
